@@ -144,13 +144,13 @@ const Home = () => {
                   slidesPerView={10}
                   breakpoints={{
                     320: {
-                      slidesPerView: 3,
+                      slidesPerView: 4,
                     },
                     640: {
                       slidesPerView: 4,
                     },
                     768: {
-                      slidesPerView: 6,
+                      slidesPerView: 5,
                     },
                     991: {
                       slidesPerView: 6,
@@ -189,7 +189,7 @@ const Home = () => {
                 <h2 className="text-2xl text-zinc-800 font-extrabold mb-4">
                   {card?.card?.card?.header?.title}
                 </h2>
-                <div className="flex flex-wrap items-center -mx-2">
+                <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4 max-sm:grid-cols-1 max-sm:gap-2">
                   {card?.card?.card?.gridElements?.infoWithStyle?.restaurants
                     .length > 0 &&
                     card?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
@@ -209,7 +209,7 @@ const Home = () => {
                           <Link
                             to={`/restaurant/${id}`}
                             key={id}
-                            className="block w-[25%]"
+                            className="block"
                           >
                             <Restaurant
                               image={RESTAURANT_IMG_CDN + cloudinaryImageId}
@@ -243,7 +243,7 @@ const Home = () => {
             {card?.card?.card?.["@type"].includes(
               "InlineViewFilterSortWidget"
             ) && (
-              <div className="relative flex gap-4 mb-4">
+              <div className="relative flex flex-wrap gap-4 mb-4">
                 {/* Filters */}
                 <FilterButton
                   onClick={() => filterRestaurants("fastDelivery")}
@@ -288,7 +288,7 @@ const Home = () => {
             {/* Restaurants grid listing */}
             {card?.card?.card?.id === "restaurant_grid_listing" && (
               <section id={card?.card?.card?.id} className="py-4">
-                <div className="flex flex-wrap -mx-2">
+                <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4 max-sm:grid-cols-1 max-sm:gap-2">
                   {searchRestaurants(filteredRestaurants).length > 0 ? (
                     searchRestaurants(filteredRestaurants).map((restaurant) => {
                       const {
@@ -306,7 +306,7 @@ const Home = () => {
                         <Link
                           to={`/restaurant/${id}`}
                           key={id}
-                          className="block w-[25%]"
+                          className="block"
                         >
                           <Restaurant
                             image={RESTAURANT_IMG_CDN + cloudinaryImageId}
@@ -337,7 +337,7 @@ const Home = () => {
                 <h2 className="text-2xl text-zinc-800 font-extrabold mb-4">
                   {card?.card?.card?.title}
                 </h2>
-                <ul className="flex flex-wrap -mx-2">
+                <ul className="grid grid-cols-4 gap-x-4 gap-y-2 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
                   {card?.card?.card?.brands.length > 0 &&
                     card?.card?.card?.brands.map((brand, index) => {
                       return (

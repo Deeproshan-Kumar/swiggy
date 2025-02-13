@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import SwiggyImage from "../../../public/swiggy.svg";
 import menus from "../../utils/menus";
 import { Link } from "react-router-dom";
@@ -16,16 +16,35 @@ const Header = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("dark");
+    if (storedTheme) {
+      setIsDarkMode(storedTheme === "true");
+    } else {
+      setIsDarkMode(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("dark", isDarkMode);
+    if (isDarkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [isDarkMode]);
   return (
-    <header className="fixed top-0 left-0 w-full bg-white border-b shadow-lg z-50">
+    <header className="fixed top-0 left-0 w-full bg-white shadow-lg z-50">
       <div className="container h-[80px] mx-auto flex justify-between items-center">
         <div>
           <Link to="/" className="flex gap-1">
-            <img src={SwiggyImage} alt="Swiggy" className="h-12" />
-            {onlineStatus && <HiStatusOnline className="text-[#ff5200]" title={"Online"}/>}
+            <img src={SwiggyImage} alt="Swiggy" className="h-auto" />
+            {onlineStatus && (
+              <HiStatusOnline className="text-[#ff5200]" title={"Online"} />
+            )}
           </Link>
         </div>
-        <ul className="flex gap-10">
+        <ul className="flex gap-10 max-lg:gap-7 max-md:gap-4">
           {menus &&
             menus.map((m, i) => {
               return (
@@ -34,7 +53,7 @@ const Header = () => {
                   className="relative text-[#3d4152] text-md font-medium cursor-pointer hover:text-[#ff5200]"
                 >
                   <Link to={m.path}>
-                    <span className="py-3 flex items-center gap-2">
+                    <span className="py-3 flex items-center gap-2 text-nowrap">
                       {m.icon}
                       {m.name}
                       {m.isNew && (

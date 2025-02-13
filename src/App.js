@@ -19,7 +19,7 @@ const App = () => {
   return (
     <ThemeContextProvider>
       <Header />
-      <main>
+      <main className="w-full font-poppins">
         <Outlet />
       </main>
       <Footer />
