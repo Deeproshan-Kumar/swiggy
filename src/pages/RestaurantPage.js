@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { RESTAURANT_INFO } from "../utils/constants";
 import { Swiper, SwiperSlide } from "swiper/react";
-import GenericImg from "../../public/generic.png";
 import { MdStars } from "react-icons/md";
+import { MdOutlineHotelClass } from "react-icons/md";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import useRestaurantMenu from "../hooks/useReastaurantMenu";
 import RestaurantMenu from "../components/RestaurantMenu";
+import RestaurantMenuShimmer from "../shimmers/RestaurantMenuShimmer";
 
 const Restaurant = () => {
   const { id } = useParams();
   const restaurantMenu = useRestaurantMenu(id);
-  if (restaurantMenu == null) return "Loading...";
+  const [showIndex, setShowIndex] = useState(0);
+  if (restaurantMenu == null) return <RestaurantMenuShimmer />;
   const { name, costForTwoMessage, avgRating, totalRatingsString, cuisines } =
     restaurantMenu[2]?.card?.card?.info;
+  const { offers } = restaurantMenu[3]?.card?.card?.gridElements?.infoWithStyle;
   const categories =
     restaurantMenu[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((cat) =>
       cat?.card?.card?.["@type"].includes("v2.ItemCategory")
@@ -40,12 +42,64 @@ const Restaurant = () => {
           </p>
         </div>
 
-        <div className="bg-gray-200">
-          {categories.map((category) => {
+        {offers && (
+          <div className="mb-10">
+            <h2 className="font-bold text-lg mb-2">Deals for you</h2>
+            <Swiper
+              spaceBetween={20}
+              slidesPerView={2.2}
+              breakpoints={{
+                320: {
+                  slidesPerView: 2,
+                },
+                768: {
+                  slidesPerView: 2.2,
+                },
+              }}
+            >
+              {offers.map((offer, index) => {
+                const { header, offerLogo, primaryDescription } = offer?.info;
+                return (
+                  <SwiperSlide key={index}>
+                    <div className="flex items-center gap-2 rounded-2xl border border-gray-300 p-3">
+                      <div>
+                        <img
+                          src={
+                            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/" +
+                            offerLogo
+                          }
+                          className="h-12"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-bold">{header}</h4>
+                        <h5 className="font-bold text-gray-500">
+                          {primaryDescription}
+                        </h5>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
+        )}
+
+        <div>
+          <h4 className="text-center font-medium text-gray-500 text-md uppercase">
+            <span className="flex items-center justify-center gap-1">
+              <MdOutlineHotelClass />
+              Menu
+              <MdOutlineHotelClass />
+            </span>
+          </h4>
+          {categories.map((category, index) => {
             return (
               <RestaurantMenu
-                key={category?.title}
+                key={index}
                 data={category?.card?.card}
+                showItems={index === showIndex ? true : false}
+                setShowIndex={() => setShowIndex(index)}
               />
             );
           })}

@@ -1,11 +1,9 @@
 import React from "react";
 import { IoMdRadioButtonOn } from "react-icons/io";
+import { MdStars } from "react-icons/md";
 import { RESTAURANT_MENU_IMG_CDN } from "../utils/constants";
 
 const MenuList = ({ items }) => {
-  if (!items || items?.length === 0) return "Loading...";
-
-  console.log(items);
   return (
     <div>
       {items.map((item, index) => {
@@ -22,9 +20,9 @@ const MenuList = ({ items }) => {
 
         return (
           <>
-            <div className="border-t-[1px] border-t-gray-200 my-7"></div>
+            <div className="my-7"></div>
             <div key={id} className="flex justify-between">
-              <div className="w-10/12">
+              <div className="w-10/12 pr-5">
                 <IoMdRadioButtonOn
                   className={
                     itemAttribute?.vegClassifier === "VEG"
@@ -33,11 +31,19 @@ const MenuList = ({ items }) => {
                   }
                 />
                 <h5 className="text-lg text-gray-600 font-bold">{name}</h5>
-                {<p>{price || "₹" + defaultPrice / 100}</p>}
+                {
+                  <p className="font-medium">
+                    {price || "₹" + defaultPrice / 100}
+                  </p>
+                }
                 <p>
-                  <span style={{ color: "#1ba672" }}>
-                    {ratings?.aggregatedRating?.rating}
-                  </span>
+                  {ratings?.aggregatedRating?.rating && (
+                    <span className="text-[#1ba672] flex items-center gap-1">
+                      <MdStars className="text-[green]" />
+                      {ratings?.aggregatedRating?.rating}
+                    </span>
+                  )}
+
                   {ratings?.aggregatedRating?.ratingCount && (
                     <span>
                       {" ("}
@@ -47,10 +53,8 @@ const MenuList = ({ items }) => {
                     </span>
                   )}
                 </p>
-
-                <p>{description}</p>
+                <p className="font-md text-gray-500">{description}</p>
               </div>
-
               <div className="relative w-2/12">
                 {imageId && (
                   <img

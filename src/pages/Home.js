@@ -17,6 +17,7 @@ import {
 import { RiResetLeftFill } from "react-icons/ri";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
+import HomepageShimmer from "../shimmers/HomepageShimmer";
 
 const Home = () => {
   const [cards, setCards] = useState([]);
@@ -124,14 +125,14 @@ const Home = () => {
   }, []);
 
   if (cards.length === 0) {
-    return <p>Loading...</p>;
+    return <HomepageShimmer />;
   }
 
   return (
     <>
       {cards.map((card, index) => {
         return (
-          <div key={index}>
+          <div key={index} className="container mx-auto">
             {/* What's on your mind? */}
             {card?.card?.card?.id === "whats_on_your_mind" && (
               <section id={card?.card?.card?.id} className="py-4">
@@ -151,7 +152,7 @@ const Home = () => {
                     768: {
                       slidesPerView: 6,
                     },
-                    1024: {
+                    991: {
                       slidesPerView: 6,
                     },
                     1024: {

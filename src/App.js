@@ -14,14 +14,12 @@ import {
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import RouteError from "./components/errors/RouteError";
 import { ThemeContextProvider } from "../src/contexts/ThemeContext";
-import useOnlineStatus from "./hooks/useOnlineStatus";
 
 const App = () => {
-  if(useOnlineStatus == false) return "Looks like you are offline please try again.";
   return (
     <ThemeContextProvider>
       <Header />
-      <main className="container mx-auto">
+      <main>
         <Outlet />
       </main>
       <Footer />

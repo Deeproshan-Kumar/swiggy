@@ -1,24 +1,25 @@
-import React, { act, useState } from "react";
+import React from "react";
 import { PiCaretDown, PiCaretUp } from "react-icons/pi";
 import MenuList from "./MenuList";
 
-const RestaurantMenu = ({ data }) => {
-  const [active, setActive] = useState(false);
+const RestaurantMenu = ({ data, showItems, setShowIndex }) => {
   return (
-    <div className="bg-white my-5">
+    <div
+      className={
+        showItems ? "bg-white py-5" : "bg-white border-b border-b-gray-300 py-5"
+      }
+    >
       <div
         className="flex justify-between items-center cursor-pointer"
-        onClick={setActive(!active)}
+        onClick={setShowIndex}
       >
         <h3 className="font-bold text-lg">
           {data?.title}{" "}
           {data?.itemCards.length && <>({data?.itemCards.length})</>}
         </h3>
-        <button>
-          <PiCaretDown />
-        </button>
+        <button>{showItems ? <PiCaretDown /> : <PiCaretUp />}</button>
       </div>
-      {active && <MenuList items={data?.itemCards} />}
+      {showItems && <MenuList items={data?.itemCards} />}
     </div>
   );
 };
