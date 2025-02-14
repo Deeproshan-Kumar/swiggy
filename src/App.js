@@ -22,7 +22,7 @@ const App = () => {
     <Provider store={appStore}>
       <ThemeContextProvider>
         <Header />
-        <main className="w-full font-poppins">
+        <main className="w-full bg-white font-poppins dark:bg-black">
           <Outlet />
         </main>
         <Footer />

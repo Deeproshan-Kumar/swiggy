@@ -136,7 +136,7 @@ const Home = () => {
             {/* What's on your mind? */}
             {card?.card?.card?.id === "whats_on_your_mind" && (
               <section id={card?.card?.card?.id} className="py-4">
-                <h2 className="text-2xl text-zinc-800 font-extrabold mb-4">
+                <h2 className="text-2xl text-zinc-800 font-extrabold mb-4 dark:text-gray-200">
                   {card?.card?.card?.header?.title}
                 </h2>
                 <Swiper
@@ -186,7 +186,7 @@ const Home = () => {
             {/* Top brands for you */}
             {card?.card?.card?.id === "top_brands_for_you" && (
               <section id={card?.card?.card?.id} className="py-4">
-                <h2 className="text-2xl text-zinc-800 font-extrabold mb-4">
+                <h2 className="text-2xl text-zinc-800 font-extrabold mb-4 dark:text-gray-200">
                   {card?.card?.card?.header?.title}
                 </h2>
                 <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4 max-sm:grid-cols-1 max-sm:gap-2">
@@ -233,7 +233,7 @@ const Home = () => {
             {/* popular_restaurants_title */}
             {card?.card?.card?.id === "popular_restaurants_title" && (
               <section id={card?.card?.card?.id} className="py-4">
-                <h2 className="text-2xl text-zinc-800 font-extrabold mb-4">
+                <h2 className="text-2xl text-zinc-800 font-extrabold mb-4 dark:text-gray-200">
                   {card?.card?.card?.title}
                 </h2>
               </section>
@@ -280,7 +280,7 @@ const Home = () => {
                   value={searchQuery}
                   placeholder="Search for restaurant and food"
                   onChange={handleSearch}
-                  className="min-w-64 border border-black-600 rounded-full p-2 px-3 outline-none focus:border-black"
+                  className="min-w-64 border border-black-600 rounded-full p-2 px-3 outline-none dark:border-gray-500 focus:border-black dark:bg-black dark:focus:border-white dark:text-gray-200"
                 />
               </div>
             )}
@@ -334,7 +334,7 @@ const Home = () => {
             {/* Restaurants near me links */}
             {card?.card?.card?.id === "restaurant_near_me_links" && (
               <section id={card?.card?.card?.id} className="py-4">
-                <h2 className="text-2xl text-zinc-800 font-extrabold mb-4">
+                <h2 className="text-2xl text-zinc-800 font-extrabold mb-4 dark:text-gray-200">
                   {card?.card?.card?.title}
                 </h2>
                 <ul className="grid grid-cols-4 gap-x-4 gap-y-2 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">

@@ -21,18 +21,18 @@ const Restaurant = ({
           </h4>
         </div>
         <div className="p-4">
-          <h3 className="text-black font-bold text-xl text-ellipsis overflow-hidden whitespace-nowrap">
+          <h3 className="text-black font-bold text-xl text-ellipsis overflow-hidden whitespace-nowrap dark:text-gray-300">
             {name}
           </h3>
-          <p className="flex items-center gap-1 font-medium text-black">
+          <p className="flex items-center gap-1 font-medium text-black dark:text-gray-500">
             <MdStars className="text-[green] text-lg" />
             {avgRating + " • "}
             {deliveryTime}
           </p>
-          <p className="text-md text-zinc-700 leading-tight">
+          <p className="text-md text-zinc-700 leading-tight dark:text-gray-500">
             {cuisines.join(", ")}
           </p>
-          <p className="flex items-center gap-1 text-md text-zinc-700">
+          <p className="flex items-center gap-1 text-md text-zinc-700 dark:text-gray-500">
             <IoLocationSharp className="text-[#ff5200]" />
             {areaName}
           </p>

@@ -33,10 +33,12 @@ const MenuList = ({ items }) => {
                       : "text-red-600"
                   }
                 />
-                <h5 className="text-lg text-black font-bold">{name}</h5>
+                <h5 className="text-lg text-black font-bold dark:text-white">
+                  {name}
+                </h5>
                 {
-                  <p className="font-medium">
-                    {price || "₹" + defaultPrice / 100}
+                  <p className="font-medium dark:text-gray-400">
+                    {"₹" + price / 100 || "₹" + defaultPrice / 100}
                   </p>
                 }
                 <p>
@@ -48,7 +50,7 @@ const MenuList = ({ items }) => {
                   )}
 
                   {ratings?.aggregatedRating?.ratingCount && (
-                    <span>
+                    <span className="dark:text-gray-200">
                       {" ("}
                       {ratings?.aggregatedRating?.ratingCount ||
                         ratings?.aggregatedRating?.ratingCountV2}
@@ -67,14 +69,14 @@ const MenuList = ({ items }) => {
                   />
                 )}
                 <button
-                  className="absolute bottom-0 left-[50%] w-9/12 translate-x-[-50%] rounded-md bg-white shadow-md font-bold text-lg uppercase text-[#1ba672] py-2 transition-all duration-200 hover:bg-gray-100 hover:shadow-none"
+                  className="absolute bottom-0 left-[50%] w-9/12 translate-x-[-50%] rounded-md bg-white shadow-md font-bold text-lg uppercase text-[#1ba672] py-2 transition-all duration-200 hover:bg-gray-100 hover:shadow-none dark:bg-[#1ba672] dark:text-white dark:hover:text-[#1ba672]"
                   onClick={() => dispatch(addItem(item))}
                 >
                   Add
                 </button>
               </div>
             </div>
-            <div className="border-t-[1px] border-t-gray-200 my-7"></div>
+            <div className="border-t-[1px] border-t-gray-200 my-7 dark:border-t-gray-700"></div>
           </div>
         );
       })}

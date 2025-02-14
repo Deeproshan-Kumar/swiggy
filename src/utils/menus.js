@@ -2,7 +2,6 @@ import { FaHome } from "react-icons/fa";
 import { FiInfo } from "react-icons/fi";
 import { BiSolidOffer } from "react-icons/bi";
 import { MdOutlineHelpOutline } from "react-icons/md";
-import { FaRegUser } from "react-icons/fa";
 
 const menus = [
   {

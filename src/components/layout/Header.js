@@ -3,39 +3,15 @@ import SwiggyImage from "../../../public/swiggy.svg";
 import menus from "../../utils/menus";
 import { NavLink } from "react-router-dom";
 import useOnlineStatus from "../../hooks/useOnlineStatus";
-import { ThemeContext } from "../../contexts/ThemeContext";
 import { useSelector } from "react-redux";
 import { HiStatusOnline } from "react-icons/hi";
-import { IoSunnySharp } from "react-icons/io5";
-import { IoMoonSharp } from "react-icons/io5";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
-  const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
   const cart = useSelector((state) => state.items);
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
 
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("dark");
-    if (storedTheme) {
-      setIsDarkMode(storedTheme === "true");
-    } else {
-      setIsDarkMode(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("dark", isDarkMode);
-    if (isDarkMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-  }, [isDarkMode]);
   return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-lg z-50">
+    <header className="fixed top-0 left-0 w-full bg-white shadow-lg z-50 dark:bg-black dark:shadow-none dark:border-b-[1px] dark:border-b-gray-700">
       <div className="container h-[80px] mx-auto flex justify-between items-center">
         <div>
           <NavLink to="/" className="flex gap-1">
@@ -47,18 +23,18 @@ const Header = () => {
         </div>
         <ul className="flex gap-14 max-lg:gap-10 max-md:gap-4">
           {menus &&
-            menus.map((m, i) => {
+            menus.map((m) => {
               return (
                 <li
                   key={m.id}
-                  className="relative text-[#3d4152] text-md font-medium cursor-pointer hover:text-[#ff5200]"
+                  className="relative text-[#3d4152] text-md font-medium"
                 >
                   <NavLink
                     to={m.path}
                     className={({ isActive }) =>
-                      `block relative pl-5 ${
+                      `block relative pl-5 cursor-pointer transition-all duration-300 hover:text-[#ff5200] ${
                         m.path === "/cart" ? "pl-5" : ""
-                      } ${isActive ? "text-[#ff5200]" : ""}`
+                      } ${isActive ? "text-[#ff5200]" : "dark:text-gray-400"}`
                     }
                   >
                     <span className="py-3 flex items-center gap-2 text-nowrap">
@@ -79,9 +55,6 @@ const Header = () => {
                 </li>
               );
             })}
-          <button onClick={toggleTheme}>
-            {isDarkMode ? <IoMoonSharp /> : <IoSunnySharp />}
-          </button>
         </ul>
       </div>
     </header>

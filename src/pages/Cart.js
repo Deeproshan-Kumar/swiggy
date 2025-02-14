@@ -14,8 +14,8 @@ const Cart = () => {
   return (
     <section className="py-20 max-lg:py-10">
       <div className="max-w-screen-lg w-full mx-auto">
-        <h4 className="text-center font-medium text-gray-500 text-md uppercase">
-          <span className="flex items-center justify-center gap-1 font-bold text-black text-2xl mb-20">
+        <h4>
+          <span className="flex items-center justify-center gap-1 font-bold text-black text-2xl mb-20 dark:text-white">
             <MdOutlineHotelClass />
             Cart
             <MdOutlineHotelClass />
@@ -37,7 +37,7 @@ const Cart = () => {
               return (
                 <>
                   {index !== 0 && (
-                    <div className="my-7 border-b-[1px] border-b-gray-200"></div>
+                    <div className="my-7 border-b-[1px] border-b-gray-200 dark:border-b-gray-500"></div>
                   )}
                   <div className="flex justify-between" key={id}>
                     <div className="w-10/12 pr-5">
@@ -48,12 +48,12 @@ const Cart = () => {
                             : "text-red-600"
                         }
                       />
-                      <h5 className="text-lg text-black font-bold">
+                      <h5 className="text-lg text-black font-bold dark:text-white">
                         {name}
                       </h5>
                       {
-                        <p className="font-medium">
-                          {price || "₹" + defaultPrice / 100}
+                        <p className="font-medium dark:text-gray-300">
+                          {"₹" + price / 100 || "₹" + defaultPrice / 100}
                         </p>
                       }
                       <p>
@@ -65,7 +65,7 @@ const Cart = () => {
                         )}
 
                         {ratings?.aggregatedRating?.ratingCount && (
-                          <span>
+                          <span className="dark:text-gray-300">
                             {" ("}
                             {ratings?.aggregatedRating?.ratingCount ||
                               ratings?.aggregatedRating?.ratingCountV2}
@@ -109,10 +109,10 @@ const Cart = () => {
                 className="max-w-80 w-full mx-auto animate-bounce mb-2"
               />
               <div className="mb-4">
-                <h3 className="text-center text-xl font-semibold text-black">
+                <h3 className="text-center text-xl font-semibold text-black mb-2 dark:text-white">
                   Your cart is empty
                 </h3>
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 text-sm dark:text-gray-400">
                   You can go to home page to view more restaurants
                 </p>
               </div>

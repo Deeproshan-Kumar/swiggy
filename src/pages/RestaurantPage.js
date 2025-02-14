@@ -24,10 +24,10 @@ const Restaurant = () => {
   return (
     <section>
       <div className="max-w-screen-lg w-full mx-auto py-20 max-lg:py-10">
-        <h2 className="text-2xl font-bold text-black mb-4">{name}</h2>
-        <div className="border border-gray-300 rounded-lg mb-10 p-4">
+        <h2 className="text-2xl font-bold text-black mb-4 dark:text-white">{name}</h2>
+        <div className="border border-gray-300 rounded-lg mb-10 p-4 dark:border-gray-500">
           <div className="flex items-center gap-1">
-            <h4 className="font-bold text-lg">
+            <h4 className="font-bold text-lg dark:text-gray-200">
               {avgRating && (
                 <span className="flex items-center gap-1">
                   <MdStars className="text-[green] text-lg" /> {avgRating}(
@@ -35,7 +35,7 @@ const Restaurant = () => {
                 </span>
               )}
             </h4>
-            •<h4 className="font-bold text-lg">{costForTwoMessage}</h4>
+            •<h4 className="font-bold text-lg dark:text-gray-400">{costForTwoMessage}</h4>
           </div>
           <p className="text-orange-400 underline font-bold">
             {cuisines.join("")}
@@ -61,7 +61,7 @@ const Restaurant = () => {
                 const { header, offerLogo, primaryDescription } = offer?.info;
                 return (
                   <SwiperSlide key={index}>
-                    <div className="flex items-center gap-2 rounded-2xl border border-gray-300 p-3">
+                    <div className="flex items-center gap-2 rounded-2xl border border-gray-300 p-3 dark:border-gray-500">
                       <div>
                         <img
                           src={
@@ -72,7 +72,7 @@ const Restaurant = () => {
                         />
                       </div>
                       <div>
-                        <h4 className="font-bold">{header}</h4>
+                        <h4 className="font-bold dark:text-white">{header}</h4>
                         <h5 className="font-bold text-gray-500">
                           {primaryDescription}
                         </h5>
@@ -87,7 +87,7 @@ const Restaurant = () => {
 
         <div>
           <h4 className="text-center font-medium text-gray-500 text-md uppercase">
-            <span className="flex items-center justify-center gap-1">
+            <span className="flex items-center justify-center gap-1 dark:text-white">
               <MdOutlineHotelClass />
               Menu
               <MdOutlineHotelClass />
