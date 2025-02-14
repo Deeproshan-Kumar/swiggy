@@ -14,16 +14,20 @@ import {
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import RouteError from "./components/errors/RouteError";
 import { ThemeContextProvider } from "../src/contexts/ThemeContext";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore";
 
 const App = () => {
   return (
-    <ThemeContextProvider>
-      <Header />
-      <main className="w-full font-poppins">
-        <Outlet />
-      </main>
-      <Footer />
-    </ThemeContextProvider>
+    <Provider store={appStore}>
+      <ThemeContextProvider>
+        <Header />
+        <main className="w-full font-poppins">
+          <Outlet />
+        </main>
+        <Footer />
+      </ThemeContextProvider>
+    </Provider>
   );
 };
 

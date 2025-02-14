@@ -2,7 +2,7 @@ import { LiaIceCreamSolid } from "react-icons/lia";
 const HomepageShimmer = () => {
   return (
     <section>
-      <div className="flex justify-center items-center h-52 bg-slate-950">
+      <div className="flex justify-center items-center h-[36vh] bg-slate-950">
         <div>
           <div className="h-14 w-14 mx-auto flex justify-center items-center rounded-full border-2 border-white mb-2">
             <LiaIceCreamSolid className="text-white text-2xl" />

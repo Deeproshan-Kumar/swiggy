@@ -12,7 +12,7 @@ const Restaurant = ({
   areaName,
 }) => {
   return (
-    <article className="snap-center transition-all duration-300 hover:scale-95">
+    <article className="snap-center">
       <div>
         <div className='relative h-[180px] w-full rounded-2xl shadow-lg overflow-hidden before:content-[""] before:absolute before:top-0 before:left-0 before:h-full before:w-full before:bg-gradient-to-t before:from-[rgba(0,0,0,0.7)] before:to-transparent'>
           <img src={image} alt={name} className="w-full h-full object-cover" />
@@ -20,7 +20,7 @@ const Restaurant = ({
             {discount}
           </h4>
         </div>
-        <div className="p-2">
+        <div className="p-4">
           <h3 className="text-black font-bold text-xl text-ellipsis overflow-hidden whitespace-nowrap">
             {name}
           </h3>

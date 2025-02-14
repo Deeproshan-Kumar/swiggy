@@ -3,7 +3,6 @@ import { FiInfo } from "react-icons/fi";
 import { BiSolidOffer } from "react-icons/bi";
 import { MdOutlineHelpOutline } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
-import { MdOutlineShoppingCart } from "react-icons/md";
 
 const menus = [
   {
@@ -36,16 +35,8 @@ const menus = [
   },
   {
     id: "5",
-    name: "Sign In",
-    path: "/sign-in",
-    icon: <FaRegUser />,
-    isNew: false,
-  },
-  {
-    id: "6",
     name: "Cart",
     path: "/cart",
-    icon: <MdOutlineShoppingCart />,
     isNew: false,
   },
 ];

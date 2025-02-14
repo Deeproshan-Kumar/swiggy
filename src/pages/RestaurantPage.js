@@ -23,7 +23,7 @@ const Restaurant = () => {
     );
   return (
     <section>
-      <div className="max-w-screen-lg w-full mx-auto py-8">
+      <div className="max-w-screen-lg w-full mx-auto py-20 max-lg:py-10">
         <h2 className="text-2xl font-bold text-black mb-4">{name}</h2>
         <div className="border border-gray-300 rounded-lg mb-10 p-4">
           <div className="flex items-center gap-1">

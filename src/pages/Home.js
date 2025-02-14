@@ -209,7 +209,7 @@ const Home = () => {
                           <Link
                             to={`/restaurant/${id}`}
                             key={id}
-                            className="block"
+                            className="block shadow-sm  rounded-2xl transition-all duration-300 hover:scale-95"
                           >
                             <Restaurant
                               image={RESTAURANT_IMG_CDN + cloudinaryImageId}
@@ -306,7 +306,7 @@ const Home = () => {
                         <Link
                           to={`/restaurant/${id}`}
                           key={id}
-                          className="block"
+                          className="block shadow-sm rounded-2xl transition-all duration-300 hover:scale-95"
                         >
                           <Restaurant
                             image={RESTAURANT_IMG_CDN + cloudinaryImageId}
