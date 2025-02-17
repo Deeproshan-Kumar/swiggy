@@ -21,6 +21,7 @@ const Restaurant = () => {
     restaurantMenu[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((cat) =>
       cat?.card?.card?.["@type"].includes("v2.ItemCategory")
     );
+    
   return (
     <section>
       <div className="max-w-screen-lg w-full mx-auto py-20 max-lg:py-10">

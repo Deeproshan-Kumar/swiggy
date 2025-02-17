@@ -3,3 +3,4 @@ export const RESTAURANT_INFO = `https://www.swiggy.com/dapi/menu/pl?page-type=RE
 export const CAT_IMG_CDN = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/`;
 export const RESTAURANT_IMG_CDN = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/`;
 export const RESTAURANT_MENU_IMG_CDN = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/`;
+export const HELP_API = `https://www.swiggy.com/dapi/support/v3/issues/`;

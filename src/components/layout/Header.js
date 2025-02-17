@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import SwiggyImage from "../../../public/swiggy.svg";
 import menus from "../../utils/menus";
 import { NavLink } from "react-router-dom";
@@ -8,7 +8,7 @@ import { HiStatusOnline } from "react-icons/hi";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
-  const cart = useSelector((state) => state.items);
+  const cart = useSelector((state) => state.cart.items);
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-lg z-50 dark:bg-black dark:shadow-none dark:border-b-[1px] dark:border-b-gray-700">
@@ -32,7 +32,7 @@ const Header = () => {
                   <NavLink
                     to={m.path}
                     className={({ isActive }) =>
-                      `block relative pl-5 cursor-pointer transition-all duration-300 hover:text-[#ff5200] ${
+                      `block relative cursor-pointer transition-all duration-300 hover:text-[#ff5200] ${
                         m.path === "/cart" ? "pl-5" : ""
                       } ${isActive ? "text-[#ff5200]" : "dark:text-gray-400"}`
                     }

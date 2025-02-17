@@ -32,7 +32,6 @@ const Home = () => {
       const response = await fetch(SWIGGY_API);
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
-      console.log(data);
       const restaurants = data?.data?.cards?.filter(
         (card) => card?.card?.card?.id === "restaurant_grid_listing"
       )[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
@@ -209,7 +208,7 @@ const Home = () => {
                           <Link
                             to={`/restaurant/${id}`}
                             key={id}
-                            className="block shadow-sm  rounded-2xl transition-all duration-300 hover:scale-95"
+                            className="block border border-gray-200 rounded-2xl transition-all duration-300 hover:scale-95 dark:border-gray-800"
                           >
                             <Restaurant
                               image={RESTAURANT_IMG_CDN + cloudinaryImageId}
@@ -232,7 +231,7 @@ const Home = () => {
 
             {/* popular_restaurants_title */}
             {card?.card?.card?.id === "popular_restaurants_title" && (
-              <section id={card?.card?.card?.id} className="py-4">
+              <section id={card?.card?.card?.id} className="pt-4">
                 <h2 className="text-2xl text-zinc-800 font-extrabold mb-4 dark:text-gray-200">
                   {card?.card?.card?.title}
                 </h2>
@@ -288,7 +287,7 @@ const Home = () => {
             {/* Restaurants grid listing */}
             {card?.card?.card?.id === "restaurant_grid_listing" && (
               <section id={card?.card?.card?.id} className="py-4">
-                <div className="grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4 max-sm:grid-cols-1 max-sm:gap-2">
+                <div className="relative min-h-80 grid grid-cols-4 gap-5 max-lg:grid-cols-3 max-md:grid-cols-2 max-md:gap-4 max-sm:grid-cols-1 max-sm:gap-2">
                   {searchRestaurants(filteredRestaurants).length > 0 ? (
                     searchRestaurants(filteredRestaurants).map((restaurant) => {
                       const {
@@ -306,7 +305,7 @@ const Home = () => {
                         <Link
                           to={`/restaurant/${id}`}
                           key={id}
-                          className="block shadow-sm rounded-2xl transition-all duration-300 hover:scale-95"
+                          className="block border border-gray-200 rounded-2xl transition-all duration-300 hover:scale-95 dark:border-gray-800"
                         >
                           <Restaurant
                             image={RESTAURANT_IMG_CDN + cloudinaryImageId}
@@ -323,8 +322,10 @@ const Home = () => {
                       );
                     })
                   ) : (
-                    <div className="min-h-80 w-full flex items-center justify-center">
-                      <p className="text-center">No restaurants found!</p>
+                    <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-full flex items-center justify-center pointer-events-none">
+                      <p className="text-center dark: text-gray-200">
+                        No restaurants found!
+                      </p>
                     </div>
                   )}
                 </div>
@@ -337,7 +338,7 @@ const Home = () => {
                 <h2 className="text-2xl text-zinc-800 font-extrabold mb-4 dark:text-gray-200">
                   {card?.card?.card?.title}
                 </h2>
-                <ul className="grid grid-cols-4 gap-x-4 gap-y-2 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
+                <ul className="grid grid-cols-4 gap-x-4 gap-y-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
                   {card?.card?.card?.brands.length > 0 &&
                     card?.card?.card?.brands.map((brand, index) => {
                       return (
@@ -351,7 +352,6 @@ const Home = () => {
                 </ul>
               </section>
             )}
-            <div className="min-h-5"></div>
           </div>
         );
       })}
