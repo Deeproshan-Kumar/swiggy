@@ -9,6 +9,8 @@ const Help = () => {
   useEffect(() => {
     if (result) {
       setLoading(false);
+    } else {
+      setLoading(true);
     }
   }, [result]);
 
@@ -32,25 +34,57 @@ const Help = () => {
               onClick={() => handleHelpBy("partner-onboarding")}
               className="block w-full text-left font-medium text-gray-700 p-5 pl-8 dark:text-gray-200"
             >
-              Partner Onboarding
+              <span
+                className={
+                  type === "partner-onboarding"
+                    ? "text-[#ff5200]"
+                    : "text-gray-700 dark:text-gray-200"
+                }
+              >
+                Partner Onboarding
+              </span>
             </button>
             <button
               onClick={() => handleHelpBy("legal")}
               className="block w-full text-left font-medium text-gray-700 p-5 pl-8 dark:text-gray-200"
             >
-              Legal
+              <span
+                className={
+                  type === "legal"
+                    ? "text-[#ff5200]"
+                    : "text-gray-700 dark:text-gray-200"
+                }
+              >
+                Legal
+              </span>
             </button>
             <button
               onClick={() => handleHelpBy("faq")}
               className="block w-full text-left font-medium text-gray-700 p-5 pl-8 dark:text-gray-200"
             >
-              FAQs
+              <span
+                className={
+                  type === "faq"
+                    ? "text-[#ff5200]"
+                    : "text-gray-700 dark:text-gray-200"
+                }
+              >
+                FAQs
+              </span>
             </button>
             <button
               onClick={() => handleHelpBy("instamart_onboarding")}
-              className="block w-full text-left font-medium text-gray-700 p-5 pl-8 dark:text-gray-200"
-            > 
-              Instamart Onboarding
+              className="block w-full text-left font-medium p-5 pl-8"
+            >
+              <span
+                className={
+                  type === "instamart_onboarding"
+                    ? "text-[#ff5200]"
+                    : "text-gray-700 dark:text-gray-200"
+                }
+              >
+                Instamart Onboarding
+              </span>
             </button>
           </div>
           <div className="w-9/12">
@@ -65,10 +99,14 @@ const Help = () => {
                     </h2>
                   )}
                   {result?.meta?.type === "legal" && (
-                    <h2 className="text-2xl font-bold text-black dark:text-white">Legal</h2>
+                    <h2 className="text-2xl font-bold text-black dark:text-white">
+                      Legal
+                    </h2>
                   )}
                   {result?.meta?.type === "faq" && (
-                    <h2 className="text-2xl font-bold text-black dark:text-white">FAQ</h2>
+                    <h2 className="text-2xl font-bold text-black dark:text-white">
+                      FAQ
+                    </h2>
                   )}
                   {result?.meta?.type === "instamart_onboarding" && (
                     <h2 className="text-2xl font-bold text-black dark:text-white">
